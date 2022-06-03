@@ -46,7 +46,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="HIGH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0y-ja-CI7">
                                         <rect key="frame" x="47" y="0.0" width="34.5" height="127.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="PrimaryTextColor"/>
+                                        <color key="textColor" name="SecondaryLabelTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NOW" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-Qu-J4o">
@@ -58,7 +58,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="LOW" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fga-52-yLi">
                                         <rect key="frame" x="48.5" y="271" width="31.5" height="127.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="PrimaryTextColor"/>
+                                        <color key="textColor" name="SecondaryLabelTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -85,6 +85,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Q0q-c3-xYA"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="aeE-Ke-KaV" id="pfw-Lo-4zA"/>
+                        <outlet property="highLabel" destination="v0y-ja-CI7" id="71a-1O-QZG"/>
+                        <outlet property="highTempLabel" destination="vYb-EZ-ZMj" id="XeZ-8C-0Mf"/>
+                        <outlet property="lowLabel" destination="fga-52-yLi" id="ZFy-yl-BED"/>
+                        <outlet property="lowTempLabel" destination="uiC-p3-jtJ" id="E4G-g4-zC5"/>
+                        <outlet property="nowLabel" destination="Si3-Qu-J4o" id="yCY-5A-2Ca"/>
+                        <outlet property="nowTempLabel" destination="g6g-1j-Ray" id="R1S-mS-y93"/>
                         <segue destination="CFI-dO-6Bu" kind="show" identifier="MainToOptions" id="ssJ-P3-YAn"/>
                     </connections>
                 </viewController>
@@ -138,8 +145,11 @@
         <namedColor name="PrimaryTextColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SecondaryLabelTextColor">
+            <color red="0.36078431372549019" green="0.33333333333333331" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryTextColor">
-            <color red="0.20399999618530273" green="0.18000000715255737" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20784313725490194" green="0.18823529411764706" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -27,6 +27,7 @@ struct WeatherManager{
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: url) { data, response, error in
+                
                 if error != nil {
                     self.delegate?.didFailWithError(error: error!)
                     return
@@ -53,7 +54,9 @@ struct WeatherManager{
             let tempHigh = decodedData.main.temp_max
             let name = decodedData.name
             
-            return WeatherModel(cityName: name, tempNow: tempNow, tempLow: tempLow, tempHigh: tempHigh, description: description)
+            let model = WeatherModel(cityName: name, tempNow: tempNow, tempLow: tempLow, tempHigh: tempHigh, description: description)
+            
+            return model
         }catch{
             delegate?.didFailWithError(error: error)
             return nil
