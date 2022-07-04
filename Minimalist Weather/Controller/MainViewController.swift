@@ -34,7 +34,8 @@ class MainViewController: UIViewController {
         
         weatherManager.delegate = self
         scrollView.delegate = self
-        
+        navigationController?.delegate = self
+                
         let viewWidth = self.view.bounds.width
         let viewHeight = self.view.bounds.height
         scrollView.contentSize = CGSize(width: viewWidth*4, height: 1.0)
@@ -61,7 +62,7 @@ class MainViewController: UIViewController {
 //        nowLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         
         navigationController?.navigationBar.barStyle = .black
-        
+         
         self.title = cities[0].uppercased()
 //        weatherManager.fetchWeather(cityName: cities[0])
     }
@@ -73,6 +74,11 @@ class MainViewController: UIViewController {
     
     @objc func goToOptions(){
         self.performSegue(withIdentifier: K.optionsSegue, sender: self)
+//        let nav = self.navigationController
+//        DispatchQueue.main.async {
+//            nav?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
+//            nav?.pushViewController(OptionsViewController(), animated: false)
+//        }
     }
 
 }
@@ -102,5 +108,21 @@ extension MainViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         self.title = cities[position].uppercased()
+    }
+}
+
+//MARK: - UINavigationControllerDelegate
+
+extension MainViewController: UINavigationControllerDelegate{
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push{
+            return FadePushAnimator()
+        }
+        
+        if operation == .pop {
+            return PopFadeAnimator()
+        }
+        
+        return nil
     }
 }

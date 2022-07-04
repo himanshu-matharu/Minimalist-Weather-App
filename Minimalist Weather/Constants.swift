@@ -7,4 +7,7 @@
 
 struct K {
     static let optionsSegue = "MainToOptions"
+    
+    static let cellIdentifier = "ReusableCell"
+    static let cellNibName = "TempCell"
 }

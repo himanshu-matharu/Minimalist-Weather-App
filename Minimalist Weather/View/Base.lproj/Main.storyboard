@@ -46,10 +46,35 @@
                     <view key="view" contentMode="scaleToFill" id="aJu-qx-MzG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OEj-36-8dU">
+                                <rect key="frame" x="20" y="88" width="374" height="654"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-a3-5qf">
+                                <rect key="frame" x="194" y="742.5" width="26" height="118.5"/>
+                                <color key="tintColor" name="PrimaryTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="y9v-9g-1Tx"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dR0-Ch-j2H"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dR0-Ch-j2H" firstAttribute="bottom" secondItem="a8z-a3-5qf" secondAttribute="bottom" id="22d-PJ-F0S"/>
+                            <constraint firstItem="a8z-a3-5qf" firstAttribute="top" secondItem="OEj-36-8dU" secondAttribute="bottom" id="EQ4-Wy-a8X"/>
+                            <constraint firstItem="OEj-36-8dU" firstAttribute="leading" secondItem="dR0-Ch-j2H" secondAttribute="leading" constant="20" id="JVS-8k-Vng"/>
+                            <constraint firstItem="a8z-a3-5qf" firstAttribute="centerX" secondItem="aJu-qx-MzG" secondAttribute="centerX" id="Ynz-na-qRq"/>
+                            <constraint firstItem="dR0-Ch-j2H" firstAttribute="bottom" secondItem="OEj-36-8dU" secondAttribute="bottom" constant="120" id="d3H-KI-F2R"/>
+                            <constraint firstItem="dR0-Ch-j2H" firstAttribute="trailing" secondItem="OEj-36-8dU" secondAttribute="trailing" constant="20" id="kdL-0M-qo0"/>
+                            <constraint firstItem="OEj-36-8dU" firstAttribute="top" secondItem="dR0-Ch-j2H" secondAttribute="top" id="mhb-UJ-sp6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cPS-K2-zw1"/>
+                    <connections>
+                        <outlet property="tableView" destination="OEj-36-8dU" id="epW-gi-puo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GY1-4y-cIb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,6 +104,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="BackgroundColor">
             <color red="0.054999999701976776" green="0.030999999493360519" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

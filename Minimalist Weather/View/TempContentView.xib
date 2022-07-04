@@ -26,45 +26,66 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yfk-kx-VYe" userLabel="TempValues">
-                    <rect key="frame" x="128.5" y="224" width="157" height="448.5"/>
+                    <rect key="frame" x="137.5" y="269" width="139" height="358.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOJ-0O-ZC9" userLabel="High">
-                            <rect key="frame" x="0.0" y="0.0" width="157" height="149.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="125"/>
-                            <color key="textColor" name="SecondaryTextColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOJ-0O-ZC9" userLabel="High">
+                            <rect key="frame" x="0.0" y="0.0" width="139" height="119.5"/>
+                            <attributedString key="attributedText">
+                                <fragment content="29">
+                                    <attributes>
+                                        <color key="NSColor" red="0.20784313725490194" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="125" name="HelveticaNeue-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-S7-t1j" userLabel="Now">
-                            <rect key="frame" x="0.0" y="149.5" width="157" height="149.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="125"/>
-                            <color key="textColor" name="PrimaryTextColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-S7-t1j" userLabel="Now">
+                            <rect key="frame" x="0.0" y="119.5" width="139" height="119.5"/>
+                            <attributedString key="attributedText">
+                                <fragment content="28">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="125" name="HelveticaNeue-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReS-YW-oNh" userLabel="Low">
-                            <rect key="frame" x="0.0" y="299" width="157" height="149.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="125"/>
-                            <color key="textColor" name="SecondaryTextColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReS-YW-oNh" userLabel="Low">
+                            <rect key="frame" x="0.0" y="239" width="139" height="119.5"/>
+                            <attributedString key="attributedText">
+                                <fragment content="25">
+                                    <attributes>
+                                        <color key="NSColor" name="SecondaryTextColor"/>
+                                        <font key="NSFont" size="125" name="HelveticaNeue-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uYg-iR-ymO">
-                    <rect key="frame" x="0.0" y="224" width="128.5" height="448.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="uYg-iR-ymO">
+                    <rect key="frame" x="15" y="269" width="122.5" height="358.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR3-49-0Pf" userLabel="High Label">
-                            <rect key="frame" x="47" y="0.0" width="34.5" height="149.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="119.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="SecondaryLabelTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Y2-sR-1ji" userLabel="Now Label">
-                            <rect key="frame" x="47.5" y="149.5" width="34" height="149.5"/>
+                            <rect key="frame" x="0.0" y="119.5" width="34" height="119.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="PrimaryTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-md-kSk" userLabel="Low Label">
-                            <rect key="frame" x="48.5" y="299" width="31.5" height="149.5"/>
+                            <rect key="frame" x="0.0" y="239" width="31.5" height="119.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="SecondaryLabelTextColor"/>
                             <nil key="highlightedColor"/>
@@ -72,7 +93,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLEAR AND SUNNY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pN-av-fRj" userLabel="description">
-                    <rect key="frame" x="142" y="732.5" width="130" height="17"/>
+                    <rect key="frame" x="142" y="687.5" width="130" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="PrimaryTextColor"/>
                     <nil key="highlightedColor"/>
@@ -85,7 +106,7 @@
                 <constraint firstItem="5pN-av-fRj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ARI-0L-ZMz"/>
                 <constraint firstItem="yfk-kx-VYe" firstAttribute="leading" secondItem="uYg-iR-ymO" secondAttribute="trailing" id="Cle-wl-NRw"/>
                 <constraint firstItem="uYg-iR-ymO" firstAttribute="height" secondItem="yfk-kx-VYe" secondAttribute="height" id="JNe-lk-g9e"/>
-                <constraint firstItem="uYg-iR-ymO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PtA-hW-vIL"/>
+                <constraint firstItem="uYg-iR-ymO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="PtA-hW-vIL"/>
                 <constraint firstItem="yfk-kx-VYe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YUT-C5-unY"/>
                 <constraint firstItem="5pN-av-fRj" firstAttribute="top" secondItem="yfk-kx-VYe" secondAttribute="bottom" constant="60" id="Ykf-uJ-U6v"/>
             </constraints>
