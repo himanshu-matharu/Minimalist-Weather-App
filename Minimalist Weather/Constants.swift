@@ -10,4 +10,7 @@ struct K {
     
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "TempCell"
+    
+    static let launchedBeforeKey = "LaunchedBefore"
+    static let savedCitiesKey = "SavedCities"
 }

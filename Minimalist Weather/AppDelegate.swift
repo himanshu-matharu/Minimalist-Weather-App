@@ -14,6 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        
+        let launchedBefore = defaults.bool(forKey: K.launchedBeforeKey)
+        if !launchedBefore{
+            defaults.set(true, forKey: K.launchedBeforeKey)
+            let cities = ["Frankfurt",
+                          "Paris",
+                          "Budapest",
+                          "London"]
+            defaults.set(cities,forKey: K.savedCitiesKey)
+        }
+        
+        
         return true
     }
 
