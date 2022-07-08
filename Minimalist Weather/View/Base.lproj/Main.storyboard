@@ -16,23 +16,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bu9-vV-yaU">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bu9-vV-yaU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53L-H6-LuC">
+                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lSQ-jG-Enp">
+                                        <rect key="frame" x="197" y="44.5" width="20" height="20.5"/>
+                                        <color key="tintColor" name="PrimaryTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="p8P-a2-UP2"/>
+                                            <constraint firstAttribute="width" constant="20" id="rsC-G5-v8p"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lSQ-jG-Enp" firstAttribute="centerX" secondItem="53L-H6-LuC" secondAttribute="centerX" id="HAN-dp-CJI"/>
+                                    <constraint firstAttribute="bottom" secondItem="lSQ-jG-Enp" secondAttribute="bottom" constant="30" id="OIt-xr-Nfc"/>
+                                    <constraint firstAttribute="height" constant="100" id="WXy-2I-RUW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Bu9-vV-yaU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1gu-m9-KlV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="53L-H6-LuC" secondAttribute="bottom" id="Ffy-FF-Evq"/>
+                            <constraint firstItem="53L-H6-LuC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OTO-Iw-huF"/>
                             <constraint firstItem="Bu9-vV-yaU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XRC-3q-Ggq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="53L-H6-LuC" secondAttribute="trailing" id="h6C-Fw-bvj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bu9-vV-yaU" secondAttribute="trailing" id="mPy-UV-XF6"/>
                             <constraint firstAttribute="bottom" secondItem="Bu9-vV-yaU" secondAttribute="bottom" id="tyc-YB-iFJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Q0q-c3-xYA"/>
                     <connections>
+                        <outlet property="goToDetailButton" destination="lSQ-jG-Enp" id="dI3-fC-M8Z"/>
                         <outlet property="scrollView" destination="Bu9-vV-yaU" id="bDh-RI-D4r"/>
+                        <outlet property="swipeView" destination="53L-H6-LuC" id="e9e-FR-1Yo"/>
                         <segue destination="CFI-dO-6Bu" kind="show" identifier="MainToOptions" id="ssJ-P3-YAn"/>
+                        <segue destination="cgx-RH-Je6" kind="show" identifier="MainToDetails" id="Whb-mD-unb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -80,6 +104,37 @@
             </objects>
             <point key="canvasLocation" x="2271.0144927536235" y="99.776785714285708"/>
         </scene>
+        <!--Details View Controller Scene-->
+        <scene sceneID="6ek-KX-RKr">
+            <objects>
+                <viewController id="cgx-RH-Je6" userLabel="Details View Controller Scene" customClass="DetailsViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C9X-FG-hEt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-ud-548">
+                                <rect key="frame" x="10" y="128" width="394" height="734"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="n1Z-nv-eb5"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Myz-ud-548" firstAttribute="leading" secondItem="n1Z-nv-eb5" secondAttribute="leading" constant="10" id="AVF-ne-Khn"/>
+                            <constraint firstItem="n1Z-nv-eb5" firstAttribute="trailing" secondItem="Myz-ud-548" secondAttribute="trailing" constant="10" id="QdX-lw-Sbz"/>
+                            <constraint firstItem="Myz-ud-548" firstAttribute="top" secondItem="n1Z-nv-eb5" secondAttribute="top" constant="40" id="Yp1-q6-dYl"/>
+                            <constraint firstItem="n1Z-nv-eb5" firstAttribute="bottom" secondItem="Myz-ud-548" secondAttribute="bottom" id="k2k-hp-1Ct"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mkJ-Ql-aaH"/>
+                    <connections>
+                        <outlet property="tableView" destination="Myz-ud-548" id="Lmd-uE-Hwy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elX-St-H2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279.7101449275365" y="826.33928571428567"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="oEg-B6-CXf">
             <objects>
@@ -104,6 +159,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="BackgroundColor">
             <color red="0.054999999701976776" green="0.030999999493360519" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

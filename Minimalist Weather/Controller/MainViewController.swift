@@ -12,11 +12,15 @@ class MainViewController: UIViewController {
     var weatherManager = WeatherManager()
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var goToDetailButton: UIImageView!
+    @IBOutlet weak var swipeView: UIView!
     
     let cities = UserDefaults.standard.array(forKey: K.savedCitiesKey) as! [String]
     var cityWeatherMap = [String:WeatherModel]()
     
     var contentViews : [TempContentView] = []
+    
+    var swipeInteractionController: SwipeInteractionController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +32,11 @@ class MainViewController: UIViewController {
         setupNavBar()
         setupScrollView()
         setupDotsView()
+        setupDetailButton()
         
         self.title = cities[0].uppercased()
+        
+        swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: DetailsViewController(), swipeView: swipeView)
     }
     
     func setupScrollView(){
@@ -70,6 +77,24 @@ class MainViewController: UIViewController {
             let sender = sender as! MainViewController
             destination.cityWeatherMap = sender.cityWeatherMap
         }
+        if segue.identifier == K.detailSegue {
+            let destination = segue.destination as! DetailsViewController
+            let sender = sender as! MainViewController
+            let pageIndex = sender.getCurrentPageIndex()
+            let weather = sender.cityWeatherMap[sender.cities[pageIndex]]
+            destination.temperature = String(format: "%.0f", weather?.tempNow ?? "--")
+            destination.descriptionValue = weather?.description ?? "--"
+        }
+    }
+    
+    func setupDetailButton(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.goToDetail))
+        goToDetailButton.isUserInteractionEnabled = true
+        goToDetailButton.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func goToDetail(){
+        self.performSegue(withIdentifier: K.detailSegue, sender: self)
     }
     
     func createContentViews() -> [TempContentView] {
@@ -84,6 +109,12 @@ class MainViewController: UIViewController {
         }
         return views
     }
+    
+    func getCurrentPageIndex() -> Int{
+        let offset = scrollView.contentOffset.x
+        let pageWidth = scrollView.frame.size.width
+        return Int(round(offset/pageWidth))
+    }
 
 }
 
@@ -93,6 +124,7 @@ extension MainViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel, index:Int) {
         let view = contentViews[index]
         let city = cities[index]
+        print(weather)
         cityWeatherMap[city] = weather
         DispatchQueue.main.async {
             view.highValue.text = String(format: "%.0f", weather.tempHigh)
@@ -121,14 +153,33 @@ extension MainViewController: UIScrollViewDelegate{
 
 extension MainViewController: UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .push{
-            return FadePushAnimator()
-        }
-        
-        if operation == .pop {
-            return PopFadeAnimator()
+        if fromVC is OptionsViewController || toVC is OptionsViewController{
+            if operation == .push{
+                return PushSlideInLeftAnimator()
+            }
+            
+            if operation == .pop {
+                return PopSlideOutLeftAnimator()
+            }
+        }else{
+            if operation == .push{
+                return PushSlideUpAnimator(interactionController:self.swipeInteractionController)
+            }
+            if operation == .pop{
+                return PopSlideDownAnimator()
+            }
         }
         
         return nil
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard let animator = animationController as? PushSlideUpAnimator,
+              let interactionController = animator.interactionController,
+              interactionController.interactionInProgress
+        else{
+            return nil
+        }
+        return interactionController
     }
 }

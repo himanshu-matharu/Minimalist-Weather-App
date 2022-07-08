@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A30175172870D48C0051C33C /* StickyDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30175162870D48C0051C33C /* StickyDotsView.swift */; };
-		A301751F2872D0B20051C33C /* FadePushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301751E2872D0B20051C33C /* FadePushAnimator.swift */; };
-		A30175232872DB5D0051C33C /* PopFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30175222872DB5D0051C33C /* PopFadeAnimator.swift */; };
+		A301751F2872D0B20051C33C /* PushSlideInLeftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301751E2872D0B20051C33C /* PushSlideInLeftAnimator.swift */; };
+		A30175232872DB5D0051C33C /* PopSlideOutLeftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30175222872DB5D0051C33C /* PopSlideOutLeftAnimator.swift */; };
 		A301752928732E890051C33C /* TempCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301752728732E890051C33C /* TempCell.swift */; };
 		A301752A28732E890051C33C /* TempCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A301752828732E890051C33C /* TempCell.xib */; };
-		A301752C28733AD00051C33C /* BottomEndianTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301752B28733AD00051C33C /* BottomEndianTableView.swift */; };
+		A3017530287623420051C33C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301752F287623420051C33C /* DetailsViewController.swift */; };
+		A3017532287625960051C33C /* PushSlideUpAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3017531287625960051C33C /* PushSlideUpAnimator.swift */; };
+		A301753428762A230051C33C /* PopSlideDownAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301753328762A230051C33C /* PopSlideDownAnimator.swift */; };
+		A3017539287639FD0051C33C /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3017537287639FD0051C33C /* ForecastCell.swift */; };
+		A301753A287639FD0051C33C /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3017538287639FD0051C33C /* ForecastCell.xib */; };
+		A301753F2877DAEA0051C33C /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301753E2877DAEA0051C33C /* SwipeInteractionController.swift */; };
 		A3B8A537286EC0800046CA30 /* TempContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B8A536286EC0800046CA30 /* TempContentView.xib */; };
 		A3B8A539286EC5240046CA30 /* TempContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8A538286EC5240046CA30 /* TempContentView.swift */; };
 		A3ECBE97284733E50058DDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECBE96284733E50058DDC2 /* AppDelegate.swift */; };
@@ -30,11 +35,16 @@
 
 /* Begin PBXFileReference section */
 		A30175162870D48C0051C33C /* StickyDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyDotsView.swift; sourceTree = "<group>"; };
-		A301751E2872D0B20051C33C /* FadePushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePushAnimator.swift; sourceTree = "<group>"; };
-		A30175222872DB5D0051C33C /* PopFadeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFadeAnimator.swift; sourceTree = "<group>"; };
+		A301751E2872D0B20051C33C /* PushSlideInLeftAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSlideInLeftAnimator.swift; sourceTree = "<group>"; };
+		A30175222872DB5D0051C33C /* PopSlideOutLeftAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSlideOutLeftAnimator.swift; sourceTree = "<group>"; };
 		A301752728732E890051C33C /* TempCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCell.swift; sourceTree = "<group>"; };
 		A301752828732E890051C33C /* TempCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempCell.xib; sourceTree = "<group>"; };
-		A301752B28733AD00051C33C /* BottomEndianTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomEndianTableView.swift; sourceTree = "<group>"; };
+		A301752F287623420051C33C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		A3017531287625960051C33C /* PushSlideUpAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSlideUpAnimator.swift; sourceTree = "<group>"; };
+		A301753328762A230051C33C /* PopSlideDownAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSlideDownAnimator.swift; sourceTree = "<group>"; };
+		A3017537287639FD0051C33C /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		A3017538287639FD0051C33C /* ForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
+		A301753E2877DAEA0051C33C /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
 		A3B8A536286EC0800046CA30 /* TempContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempContentView.xib; sourceTree = "<group>"; };
 		A3B8A538286EC5240046CA30 /* TempContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempContentView.swift; sourceTree = "<group>"; };
 		A3ECBE93284733E50058DDC2 /* Minimalist Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minimalist Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,8 +76,11 @@
 		A30175242872E0810051C33C /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				A301751E2872D0B20051C33C /* FadePushAnimator.swift */,
-				A30175222872DB5D0051C33C /* PopFadeAnimator.swift */,
+				A301751E2872D0B20051C33C /* PushSlideInLeftAnimator.swift */,
+				A30175222872DB5D0051C33C /* PopSlideOutLeftAnimator.swift */,
+				A3017531287625960051C33C /* PushSlideUpAnimator.swift */,
+				A301753328762A230051C33C /* PopSlideDownAnimator.swift */,
+				A301753E2877DAEA0051C33C /* SwipeInteractionController.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -120,6 +133,7 @@
 			children = (
 				A3ECBE9A284733E50058DDC2 /* MainViewController.swift */,
 				A3ECBEAA284740830058DDC2 /* OptionsViewController.swift */,
+				A301752F287623420051C33C /* DetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,12 +142,13 @@
 			isa = PBXGroup;
 			children = (
 				A3ECBE9C284733E50058DDC2 /* Main.storyboard */,
-				A3B8A536286EC0800046CA30 /* TempContentView.xib */,
 				A3B8A538286EC5240046CA30 /* TempContentView.swift */,
-				A30175162870D48C0051C33C /* StickyDotsView.swift */,
+				A3B8A536286EC0800046CA30 /* TempContentView.xib */,
 				A301752728732E890051C33C /* TempCell.swift */,
 				A301752828732E890051C33C /* TempCell.xib */,
-				A301752B28733AD00051C33C /* BottomEndianTableView.swift */,
+				A3017537287639FD0051C33C /* ForecastCell.swift */,
+				A3017538287639FD0051C33C /* ForecastCell.xib */,
+				A30175162870D48C0051C33C /* StickyDotsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +215,7 @@
 				A3ECBEA3284733E60058DDC2 /* LaunchScreen.storyboard in Resources */,
 				A301752A28732E890051C33C /* TempCell.xib in Resources */,
 				A3ECBEA0284733E60058DDC2 /* Assets.xcassets in Resources */,
+				A301753A287639FD0051C33C /* ForecastCell.xib in Resources */,
 				A3ECBE9E284733E50058DDC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,20 +227,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A301753F2877DAEA0051C33C /* SwipeInteractionController.swift in Sources */,
 				A3ECBEAD284750750058DDC2 /* Constants.swift in Sources */,
 				A3ECBEB1284814720058DDC2 /* WeatherData.swift in Sources */,
-				A301751F2872D0B20051C33C /* FadePushAnimator.swift in Sources */,
+				A301751F2872D0B20051C33C /* PushSlideInLeftAnimator.swift in Sources */,
 				A30175172870D48C0051C33C /* StickyDotsView.swift in Sources */,
 				A3ECBE9B284733E50058DDC2 /* MainViewController.swift in Sources */,
+				A3017532287625960051C33C /* PushSlideUpAnimator.swift in Sources */,
 				A3B8A539286EC5240046CA30 /* TempContentView.swift in Sources */,
 				A3ECBEAB284740830058DDC2 /* OptionsViewController.swift in Sources */,
-				A301752C28733AD00051C33C /* BottomEndianTableView.swift in Sources */,
-				A30175232872DB5D0051C33C /* PopFadeAnimator.swift in Sources */,
+				A30175232872DB5D0051C33C /* PopSlideOutLeftAnimator.swift in Sources */,
+				A301753428762A230051C33C /* PopSlideDownAnimator.swift in Sources */,
 				A3ECBE97284733E50058DDC2 /* AppDelegate.swift in Sources */,
 				A3ECBEB62848160B0058DDC2 /* WeatherManager.swift in Sources */,
 				A3ECBEB3284815140058DDC2 /* WeatherModel.swift in Sources */,
 				A301752928732E890051C33C /* TempCell.swift in Sources */,
 				A3ECBE99284733E50058DDC2 /* SceneDelegate.swift in Sources */,
+				A3017530287623420051C33C /* DetailsViewController.swift in Sources */,
+				A3017539287639FD0051C33C /* ForecastCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
