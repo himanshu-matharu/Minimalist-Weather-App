@@ -1,65 +1,39 @@
 //
-//  WeatherManager.swift
+//  WeatherManager2.swift
 //  Minimalist Weather
 //
-//  Created by Himanshu Matharu on 2022-06-01.
+//  Created by Himanshu Matharu on 2022-07-14.
 //
 
 import Foundation
 
-protocol WeatherManagerDelegate {
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather:WeatherModel, index:Int)
-    func didFailWithError(error:Error)
-}
-
-struct WeatherManager{
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=ab0cab1996187a8e5d0d6c54e05fc616&units=metric"
+class WeatherManager{
     
-    var delegate: WeatherManagerDelegate?
+    //MARK: - Variables and Properties
+    let network = Network()
+    var weatherData : WeatherData? = nil
+    static let shared = WeatherManager()
     
-    func fetchWeather(cityName:String, index:Int){
-        let urlString = "\(weatherURL)&q=\(cityName)"
-        performRequest(with: urlString, index:index)
-    }
-    
-    func performRequest(with urlString:String, index:Int){
-        if let url = URL(string: urlString){
-            let session = URLSession(configuration: .default)
-            
-            let task = session.dataTask(with: url) { data, response, error in
-                
-                if error != nil {
-                    self.delegate?.didFailWithError(error: error!)
-                    return
+    //MARK: - Class Methods
+    func loadAllData(){
+        guard let data = weatherData else {return}
+        data.isLoaded = false
+        let cities = data.cities
+        let group = DispatchGroup()
+        for city in cities{
+            group.enter()
+            let urlString = "\(K.apiBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&q=\(city)"
+            network.performWeatherRequest(with: urlString) { weatherModel, success in
+                if success{
+                    data.updateCityWeather(city: city, weather: weatherModel!)
                 }
-                
-                if let safeData = data{
-                    if let weather = parseJSON(safeData){
-                        self.delegate?.didUpdateWeather(self, weather: weather, index:index)
-                    }
-                }
+                group.leave()
             }
-            
-            task.resume()
+        }
+        group.notify(queue: .main) {
+            data.isLoaded = true
+            data.delegate?.didUpdateWeather(data)
         }
     }
     
-    func parseJSON(_ weatherData:Data)->WeatherModel?{
-        let decoder = JSONDecoder()
-        do{
-            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let description = decodedData.weather[0].description
-            let tempNow = decodedData.main.temp
-            let tempLow = decodedData.main.temp_min
-            let tempHigh = decodedData.main.temp_max
-            let name = decodedData.name
-            
-            let model = WeatherModel(cityName: name, tempNow: tempNow, tempLow: tempLow, tempHigh: tempHigh, description: description)
-            
-            return model
-        }catch{
-            delegate?.didFailWithError(error: error)
-            return nil
-        }
-    }
 }

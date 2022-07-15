@@ -16,6 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        setupCityDefaults()
+        
+        // Initialize weather data instance
+        let weatherData = WeatherData()
+        WeatherManager.shared.weatherData = weatherData
+        
+        if let navigationController = window?.rootViewController as? UINavigationController,
+           let mainVC = navigationController.viewControllers.first as? MainViewController
+        {
+            print("If let working")
+            mainVC.weatherData = weatherData
+        }
+        WeatherManager.shared.loadAllData()
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -47,6 +62,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    //MARK: - Custom Methods
+    private func setupCityDefaults(){
+        let defaults = UserDefaults.standard
+        
+        let launchedBefore = defaults.bool(forKey: K.launchedBeforeKey)
+        if !launchedBefore{
+            defaults.set(true, forKey: K.launchedBeforeKey)
+            let cities = ["Frankfurt",
+                          "Paris",
+                          "Budapest",
+                          "London"]
+            defaults.set(cities,forKey: K.savedCitiesKey)
+        }
+    }
 
 }
 

@@ -9,14 +9,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var weatherManager = WeatherManager()
+    var weatherData : WeatherData?
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var goToDetailButton: UIImageView!
     @IBOutlet weak var swipeView: UIView!
-    
-    let cities = UserDefaults.standard.array(forKey: K.savedCitiesKey) as! [String]
-    var cityWeatherMap = [String:WeatherModel]()
     
     var contentViews : [TempContentView] = []
     
@@ -25,7 +22,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherManager.delegate = self
+        weatherData?.delegate = self
         scrollView.delegate = self
         navigationController?.delegate = self
         
@@ -34,12 +31,12 @@ class MainViewController: UIViewController {
         setupDotsView()
         setupDetailButton()
         
-        self.title = cities[0].uppercased()
+        self.title = weatherData?.cities[0].uppercased()
         
         swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: DetailsViewController(), swipeView: swipeView)
     }
     
-    func setupScrollView(){
+    private func setupScrollView(){
         let viewWidth = self.view.bounds.width
         let viewHeight = self.view.bounds.height
         scrollView.contentSize = CGSize(width: viewWidth*4, height: 1.0)
@@ -49,19 +46,21 @@ class MainViewController: UIViewController {
         for (index,view) in contentViews.enumerated(){
             view.frame = CGRect(x: viewWidth*CGFloat(index), y: 0, width: viewWidth, height: viewHeight)
             scrollView.addSubview(view)
-            weatherManager.fetchWeather(cityName: cities[index], index:index)
         }
         scrollView.isPagingEnabled = true
+        if weatherData?.isLoaded ?? false {
+            updateContentViews()
+        }
     }
     
-    func setupDotsView(){
+    private func setupDotsView(){
         let viewWidth = self.view.bounds.width
         let dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView, dotsWidth: 8, dotsColor: UIColor(named: "SecondaryTextColor")!, dotsAlpha: 1)
         dotsView.center = CGPoint(x: viewWidth*0.5, y: 150)
         self.view.addSubview(dotsView)
     }
 
-    func setupNavBar(){
+    private func setupNavBar(){
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "hamburger_menu"), style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.goToOptions))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationController?.navigationBar.barStyle = .black
@@ -75,19 +74,18 @@ class MainViewController: UIViewController {
         if segue.identifier == K.optionsSegue {
             let destination = segue.destination as! OptionsViewController
             let sender = sender as! MainViewController
-            destination.cityWeatherMap = sender.cityWeatherMap
+            destination.weatherData = sender.weatherData
         }
         if segue.identifier == K.detailSegue {
             let destination = segue.destination as! DetailsViewController
             let sender = sender as! MainViewController
             let pageIndex = sender.getCurrentPageIndex()
-            let weather = sender.cityWeatherMap[sender.cities[pageIndex]]
-            destination.temperature = String(format: "%.0f", weather?.tempNow ?? "--")
-            destination.descriptionValue = weather?.description ?? "--"
+            destination.weatherData = sender.weatherData
+            destination.city = sender.weatherData?.cities[pageIndex]
         }
     }
     
-    func setupDetailButton(){
+    private func setupDetailButton(){
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.goToDetail))
         goToDetailButton.isUserInteractionEnabled = true
         goToDetailButton.addGestureRecognizer(tapGestureRecognizer)
@@ -97,55 +95,57 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: K.detailSegue, sender: self)
     }
     
-    func createContentViews() -> [TempContentView] {
+    private func createContentViews() -> [TempContentView] {
         var views: [TempContentView] = []
-        for _ in cities{
-            let contentView = TempContentView()
-            contentView.highValue.text = "--"
-            contentView.nowValue.text = "--"
-            contentView.lowValue.text = "--"
-            contentView.descriptionValue.text = "--"
-            views.append(contentView)
+        if let cities = weatherData?.cities {
+            for _ in cities{
+                let contentView = TempContentView()
+                contentView.highValue.text = "--"
+                contentView.nowValue.text = "--"
+                contentView.lowValue.text = "--"
+                contentView.descriptionValue.text = "--"
+                views.append(contentView)
+            }
+            return views
         }
-        return views
+        return []
     }
     
-    func getCurrentPageIndex() -> Int{
+    private func getCurrentPageIndex() -> Int{
         let offset = scrollView.contentOffset.x
         let pageWidth = scrollView.frame.size.width
         return Int(round(offset/pageWidth))
     }
-
-}
-
-//MARK: - WeatherManagerDelegate
-
-extension MainViewController: WeatherManagerDelegate{
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel, index:Int) {
-        let view = contentViews[index]
-        let city = cities[index]
-        print(weather)
-        cityWeatherMap[city] = weather
-        DispatchQueue.main.async {
+    
+    private func updateContentViews(){
+        guard let cities = weatherData?.cities else {return}
+        for (index, view) in contentViews.enumerated(){
+            let city = cities[index]
+            guard let weather = weatherData?.getCityWeather(city: city) else {return}
             view.highValue.text = String(format: "%.0f", weather.tempHigh)
             view.nowValue.text = String(format: "%.0f", weather.tempNow)
             view.lowValue.text = String(format: "%.0f", weather.tempNow)
             view.descriptionValue.text = weather.description.uppercased()
         }
     }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
+
 }
 
+
+//MARK: - WeatherDataDelegate
+
+extension MainViewController: WeatherDataDelegate{
+    func didUpdateWeather(_ weatherDataInstance: WeatherData) {
+        updateContentViews()
+    }
+}
 
 //MARK: - ScrollViewDelegate
 
 extension MainViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-        self.title = cities[pageIndex].uppercased()
+        self.title = weatherData?.cities[pageIndex].uppercased()
     }
 }
 
