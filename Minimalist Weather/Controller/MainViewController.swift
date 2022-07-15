@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         
         self.title = weatherData?.cities[0].uppercased()
         
-        swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: DetailsViewController(), swipeView: swipeView)
+        swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: ForecastsViewController(), swipeView: swipeView)
     }
     
     private func setupScrollView(){
@@ -64,6 +64,12 @@ class MainViewController: UIViewController {
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "hamburger_menu"), style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.goToOptions))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationController?.navigationBar.barStyle = .black
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named:"BackgroundColor")
+        appearance.titleTextAttributes = (navigationController?.navigationBar.titleTextAttributes)!
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     @objc func goToOptions(){
@@ -77,7 +83,7 @@ class MainViewController: UIViewController {
             destination.weatherData = sender.weatherData
         }
         if segue.identifier == K.detailSegue {
-            let destination = segue.destination as! DetailsViewController
+            let destination = segue.destination as! ForecastsViewController
             let sender = sender as! MainViewController
             let pageIndex = sender.getCurrentPageIndex()
             destination.weatherData = sender.weatherData
@@ -137,6 +143,10 @@ class MainViewController: UIViewController {
 extension MainViewController: WeatherDataDelegate{
     func didUpdateWeather(_ weatherDataInstance: WeatherData) {
         updateContentViews()
+    }
+    
+    func didUpdateForecast(_ weatherDataInstance: WeatherData) {
+        // do nothing
     }
 }
 

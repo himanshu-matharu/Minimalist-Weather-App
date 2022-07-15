@@ -22,6 +22,10 @@ class PopSlideDownAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let window = UIScreen.main.bounds
         let containerView = transitionContext.containerView
         
+        let tempView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: window.size.width, height: window.size.height)))
+        tempView.backgroundColor = UIColor(named: "BackgroundColor")
+        containerView.insertSubview(tempView, belowSubview: containerView.subviews.first!)
+        
         containerView.addSubview(toVC.view)
         toVC.view.transform = .init(translationX: 1, y: -window.size.height)
         toVC.view.alpha = 0.0
@@ -36,6 +40,7 @@ class PopSlideDownAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } completion: { finished in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.transform = .identity
+            tempView.removeFromSuperview()
         }
 
     }

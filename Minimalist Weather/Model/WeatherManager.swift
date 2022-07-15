@@ -36,4 +36,16 @@ class WeatherManager{
         }
     }
     
+    func loadForecastData(for city:String){
+        guard let data = weatherData else {return}
+        let urlString = "\(K.apiForecastBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&q=\(city)"
+        network.performForecastRequest(with: urlString) { forecastModel, success in
+            if success{
+                DispatchQueue.main.async {
+                    data.updateForecastDate(city: city, forecastModel: forecastModel!)
+                }
+            }
+        }
+    }
+    
 }

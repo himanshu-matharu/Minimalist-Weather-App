@@ -7,6 +7,16 @@
 
 import Foundation
 
+struct ForecastRequest: Decodable {
+    let list: [ForecastRequestSub]
+}
+
+struct ForecastRequestSub: Decodable {
+    let dt: Double
+    let main: Main
+    let weather: [Weather]
+}
+
 struct WeatherRequest: Decodable {
     let name: String
     let main: Main

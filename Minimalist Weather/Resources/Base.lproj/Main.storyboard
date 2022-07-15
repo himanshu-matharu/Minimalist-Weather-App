@@ -107,13 +107,13 @@
         <!--Details View Controller Scene-->
         <scene sceneID="6ek-KX-RKr">
             <objects>
-                <viewController id="cgx-RH-Je6" userLabel="Details View Controller Scene" customClass="DetailsViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cgx-RH-Je6" userLabel="Details View Controller Scene" customClass="ForecastsViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C9X-FG-hEt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-ud-548">
-                                <rect key="frame" x="10" y="128" width="394" height="734"/>
+                                <rect key="frame" x="10" y="88" width="394" height="774"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -122,7 +122,7 @@
                         <constraints>
                             <constraint firstItem="Myz-ud-548" firstAttribute="leading" secondItem="n1Z-nv-eb5" secondAttribute="leading" constant="10" id="AVF-ne-Khn"/>
                             <constraint firstItem="n1Z-nv-eb5" firstAttribute="trailing" secondItem="Myz-ud-548" secondAttribute="trailing" constant="10" id="QdX-lw-Sbz"/>
-                            <constraint firstItem="Myz-ud-548" firstAttribute="top" secondItem="n1Z-nv-eb5" secondAttribute="top" constant="40" id="Yp1-q6-dYl"/>
+                            <constraint firstItem="Myz-ud-548" firstAttribute="top" secondItem="n1Z-nv-eb5" secondAttribute="top" id="Yp1-q6-dYl"/>
                             <constraint firstItem="n1Z-nv-eb5" firstAttribute="bottom" secondItem="Myz-ud-548" secondAttribute="bottom" id="k2k-hp-1Ct"/>
                         </constraints>
                     </view>

@@ -20,4 +20,6 @@ struct K {
     static let apiBaseUrl = "https://api.openweathermap.org/data/2.5/weather"
     static let apiKey = "ab0cab1996187a8e5d0d6c54e05fc616"
     static let apiUnits = "metric"
+    static let apiForecastBaseUrl = "https://api.openweathermap.org/data/2.5/forecast"
+    
 }
