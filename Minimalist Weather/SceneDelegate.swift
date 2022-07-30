@@ -6,17 +6,33 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    let DUMMY_CITIES : [City] = [
+        City(id: 0, name: "My Location", latitude: 0, longitude: 0),
+        City(id: 1,name: "Frankfurt", latitude: 50.11630522359943, longitude: 8.683179487766711),
+        City(id: 2,name: "Paris", latitude: 48.85345575326961, longitude: 2.3500839018335804),
+        City(id: 3,name: "Budapest", latitude: 47.51777591723693, longitude: 19.046526389932264),
+        City(id: 4,name: "London", latitude: 51.496936024546535, longitude: -0.12289001864225133)
+    ]
+    
     var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        // temp
+        UserDefaults.standard.set(false, forKey: K.launchedBeforeKey)
+    
         setupCityDefaults()
         
         // Initialize weather data instance
@@ -26,10 +42,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let navigationController = window?.rootViewController as? UINavigationController,
            let mainVC = navigationController.viewControllers.first as? MainViewController
         {
-            print("If let working")
             mainVC.weatherData = weatherData
         }
-        WeatherManager.shared.loadAllData()
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }
@@ -68,14 +82,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let launchedBefore = defaults.bool(forKey: K.launchedBeforeKey)
         if !launchedBefore{
-            defaults.set(true, forKey: K.launchedBeforeKey)
-            let cities = ["Frankfurt",
-                          "Paris",
-                          "Budapest",
-                          "London"]
-            defaults.set(cities,forKey: K.savedCitiesKey)
+            do{
+                let encoder = JSONEncoder()
+                let cities = try encoder.encode(DUMMY_CITIES)
+                defaults.set(true, forKey: K.launchedBeforeKey)
+                defaults.set(cities,forKey: K.savedCitiesKey)
+            }catch{
+                print("Unable to encode dummy cities array")
+            }
         }
     }
 
+}
+
+//MARK: - CLLocationManagerDelegate
+
+extension SceneDelegate: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                if error == nil{
+                    let firstLocation = placemarks?[0]
+                    let cityName = firstLocation?.locality ?? "My Location"
+                    WeatherManager.shared.weatherData?.updateMyLocation(city: cityName, latitude: latitude, longitude: longitude)
+                    WeatherManager.shared.loadAllData()
+                }
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
 

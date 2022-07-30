@@ -22,7 +22,7 @@ class WeatherManager{
         let group = DispatchGroup()
         for city in cities{
             group.enter()
-            let urlString = "\(K.apiBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&q=\(city)"
+            let urlString = "\(K.apiBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&lat=\(city.latitude)&lon=\(city.longitude)"
             network.performWeatherRequest(with: urlString) { weatherModel, success in
                 if success{
                     data.updateCityWeather(city: city, weather: weatherModel!)
@@ -36,9 +36,9 @@ class WeatherManager{
         }
     }
     
-    func loadForecastData(for city:String){
+    func loadForecastData(for city:City){
         guard let data = weatherData else {return}
-        let urlString = "\(K.apiForecastBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&q=\(city)"
+        let urlString = "\(K.apiForecastBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&lat=\(city.latitude)&lon=\(city.longitude)"
         network.performForecastRequest(with: urlString) { forecastModel, success in
             if success{
                 DispatchQueue.main.async {

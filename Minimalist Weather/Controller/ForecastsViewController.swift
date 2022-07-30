@@ -12,7 +12,7 @@ class ForecastsViewController : UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var weatherData: WeatherData?
-    var city: String?
+    var city: City?
     var forecast : [Forecast]?
     
     override func viewDidLoad() {
@@ -110,5 +110,9 @@ extension ForecastsViewController: WeatherDataDelegate{
     func didUpdateForecast(_ weatherDataInstance: WeatherData) {
         forecast = weatherData!.getCityForecast(city: city!)
         tableView.reloadData()
+    }
+    
+    func didUpdateCities(_ weatherDataInstance: WeatherData, action: UpdateActions) {
+        // do nothing
     }
 }

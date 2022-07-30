@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var goToDetailButton: UIImageView!
     @IBOutlet weak var swipeView: UIView!
     
+    var dotsView: StickyDotsView?
     var contentViews : [TempContentView] = []
     
     var swipeInteractionController: SwipeInteractionController?
@@ -31,7 +32,7 @@ class MainViewController: UIViewController {
         setupDotsView()
         setupDetailButton()
         
-        self.title = weatherData?.cities[0].uppercased()
+        self.title = weatherData?.cities[0].name.uppercased()
         
         swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: ForecastsViewController(), swipeView: swipeView)
     }
@@ -39,7 +40,8 @@ class MainViewController: UIViewController {
     private func setupScrollView(){
         let viewWidth = self.view.bounds.width
         let viewHeight = self.view.bounds.height
-        scrollView.contentSize = CGSize(width: viewWidth*4, height: 1.0)
+        let count = CGFloat(weatherData?.cities.count ?? 0)
+        scrollView.contentSize = CGSize(width: viewWidth*count, height: 1.0)
         scrollView.contentInsetAdjustmentBehavior = .never
         
         contentViews = createContentViews()
@@ -55,9 +57,9 @@ class MainViewController: UIViewController {
     
     private func setupDotsView(){
         let viewWidth = self.view.bounds.width
-        let dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView, dotsWidth: 8, dotsColor: UIColor(named: "SecondaryTextColor")!, dotsAlpha: 1)
-        dotsView.center = CGPoint(x: viewWidth*0.5, y: 150)
-        self.view.addSubview(dotsView)
+        dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView, dotsWidth: 8, dotsColor: UIColor(named: "SecondaryTextColor")!, dotsAlpha: 1)
+        dotsView!.center = CGPoint(x: viewWidth*0.5, y: 150)
+        self.view.addSubview(dotsView!)
     }
 
     private func setupNavBar(){
@@ -132,6 +134,9 @@ class MainViewController: UIViewController {
             view.nowValue.text = String(format: "%.0f", weather.tempNow)
             view.lowValue.text = String(format: "%.0f", weather.tempNow)
             view.descriptionValue.text = weather.description.uppercased()
+            if (getCurrentPageIndex() == index){
+                self.title = city.name.uppercased()
+            }
         }
     }
 
@@ -148,6 +153,17 @@ extension MainViewController: WeatherDataDelegate{
     func didUpdateForecast(_ weatherDataInstance: WeatherData) {
         // do nothing
     }
+    
+    func didUpdateCities(_ weatherDataInstance: WeatherData, action: UpdateActions) {
+        if action == .delete{
+            dotsView?.removeFromSuperview()
+            dotsView = nil
+            scrollView.removeAllSubviews()
+            contentViews.removeAll()
+            setupScrollView()
+            setupDotsView()
+        }
+    }
 }
 
 //MARK: - ScrollViewDelegate
@@ -155,7 +171,7 @@ extension MainViewController: WeatherDataDelegate{
 extension MainViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-        self.title = weatherData?.cities[pageIndex].uppercased()
+        self.title = weatherData?.cities[pageIndex].name.uppercased()
     }
 }
 
