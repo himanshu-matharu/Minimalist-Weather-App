@@ -19,7 +19,8 @@ class OptionsViewController: UIViewController {
         setupTableView()
         setupSearchButton()
         
-        weatherData?.delegate = self
+        weatherData?.multicastDelegate.add(delegate: self)
+//        weatherData?.delegate = self
     }
     
     func setupTableView(){

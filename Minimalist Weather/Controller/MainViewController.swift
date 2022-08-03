@@ -23,7 +23,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherData?.delegate = self
+        weatherData?.multicastDelegate.add(delegate: self)
+//        weatherData?.delegate = self
         scrollView.delegate = self
         navigationController?.delegate = self
         

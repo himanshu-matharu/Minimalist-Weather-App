@@ -32,7 +32,10 @@ class WeatherManager{
         }
         group.notify(queue: .main) {
             data.isLoaded = true
-            data.delegate?.didUpdateWeather(data)
+            data.multicastDelegate.invokeForEachDelegate { delegate in
+                delegate.didUpdateWeather(data)
+            }
+//            data.delegate?.didUpdateWeather(data)
         }
     }
     

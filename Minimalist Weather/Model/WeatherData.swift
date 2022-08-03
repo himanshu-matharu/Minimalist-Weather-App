@@ -13,7 +13,7 @@ enum UpdateActions: String{
     case add
 }
 
-protocol WeatherDataDelegate{
+protocol WeatherDataDelegate: AnyObject{
     func didUpdateWeather(_ weatherDataInstance: WeatherData)
     func didUpdateForecast(_ weatherDataInstance: WeatherData)
     func didUpdateCities(_ weatherDataInstance: WeatherData, action:UpdateActions)
@@ -25,7 +25,7 @@ class WeatherData {
     var cities : [City] = []
     private var cityWeatherMap : [Int:WeatherModel] = [:]
     private var cityForecastMap : [Int:[Forecast]] = [:]
-    var delegate : WeatherDataDelegate?
+    let multicastDelegate = MulticastDelegate<WeatherDataDelegate>()
     var isLoaded : Bool = false
     
     //MARK: - Initialization
@@ -77,7 +77,10 @@ class WeatherData {
         }
         final = final.sorted(by: {$0.date.compare($1.date) == .orderedAscending})
         cityForecastMap[city.id] = final
-        delegate?.didUpdateForecast(self)
+        multicastDelegate.invokeForEachDelegate { delegate in
+            delegate.didUpdateForecast(self)
+        }
+//        delegate?.didUpdateForecast(self)
     }
     
     func updateMyLocation(city:String,latitude:Double,longitude:Double){
@@ -90,7 +93,10 @@ class WeatherData {
         cityWeatherMap.removeValue(forKey: cityToRemove.id)
         cityForecastMap.removeValue(forKey: cityToRemove.id)
         updateSavedCities()
-        delegate?.didUpdateCities(self, action: .delete)
+        multicastDelegate.invokeForEachDelegate { delegate in
+            delegate.didUpdateCities(self, action: .delete)
+        }
+//        delegate?.didUpdateCities(self, action: .delete)
     }
     
     func addSavedCity(city:City, weather:WeatherModel){
@@ -100,7 +106,10 @@ class WeatherData {
         cityWeatherMap[newCity.id] = weather
         cityForecastMap[newCity.id] = nil
         updateSavedCities()
-        delegate?.didUpdateCities(self, action: .add)
+        multicastDelegate.invokeForEachDelegate { delegate in
+            delegate.didUpdateCities(self, action: .add)
+        }
+//        delegate?.didUpdateCities(self, action: .add)
     }
     
     func updateSavedCities(){
@@ -118,7 +127,10 @@ class WeatherData {
         let cityToRearrange = cities.remove(at: sourceIndex)
         cities.insert(cityToRearrange, at: destinationIndex)
         updateSavedCities()
-        delegate?.didUpdateCities(self, action: .update)
+        multicastDelegate.invokeForEachDelegate { delegate in
+            delegate.didUpdateCities(self, action: .update)
+        }
+//        delegate?.didUpdateCities(self, action: .update)
     }
     
     func getAvailableCityId() -> Int{

@@ -20,7 +20,8 @@ class ForecastsViewController : UIViewController {
         setupNavBar()
         setupTableView()
 
-        weatherData?.delegate = self
+        weatherData?.multicastDelegate.add(delegate: self)
+//        weatherData?.delegate = self
         initForecast()
     }
     
