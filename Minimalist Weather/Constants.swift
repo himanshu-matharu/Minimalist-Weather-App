@@ -8,6 +8,8 @@
 struct K {
     static let optionsSegue = "MainToOptions"
     static let detailSegue = "MainToDetails"
+    static let searchSegue = "OptionsToSearch"
+    static let searchDetailSegue = "SearchToDetail"
     
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "TempCell"

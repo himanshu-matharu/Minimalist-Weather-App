@@ -86,7 +86,6 @@ public class StickyDotsView: UIView {
         
         self.addSubview(dotsView)
         self.addSubview(indicatorView)
-        print("laid out subviews")
     }
     
     override public func layoutSubviews() {

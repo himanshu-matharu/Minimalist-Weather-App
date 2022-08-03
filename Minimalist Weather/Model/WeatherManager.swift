@@ -48,4 +48,15 @@ class WeatherManager{
         }
     }
     
+    func loadCityWeatherData(city:City, completion: @escaping (WeatherModel?, Bool)->()){
+        let urlString = "\(K.apiBaseUrl)?appid=\(K.apiKey)&units=\(K.apiUnits)&lat=\(city.latitude)&lon=\(city.longitude)"
+        network.performWeatherRequest(with: urlString) { weatherModel, success in
+            if success {
+                completion(weatherModel,true)
+            }else{
+                completion(nil,false)
+            }
+        }
+    }
+    
 }

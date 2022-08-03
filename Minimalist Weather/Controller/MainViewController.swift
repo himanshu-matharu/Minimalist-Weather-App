@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(dotsView!)
     }
 
-    private func setupNavBar(){
+    private func setupNavBar(){ 
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "hamburger_menu"), style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.goToOptions))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationController?.navigationBar.barStyle = .black
@@ -70,6 +70,9 @@ class MainViewController: UIViewController {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named:"BackgroundColor")
         appearance.titleTextAttributes = (navigationController?.navigationBar.titleTextAttributes)!
+        appearance.shadowColor = .clear
+        appearance.shadowImage = UIImage()
+        
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.standardAppearance = appearance
     }
@@ -100,7 +103,9 @@ class MainViewController: UIViewController {
     }
     
     @objc func goToDetail(){
-        self.performSegue(withIdentifier: K.detailSegue, sender: self)
+        if ((weatherData?.isLoaded) != nil){
+            self.performSegue(withIdentifier: K.detailSegue, sender: self)
+        }
     }
     
     private func createContentViews() -> [TempContentView] {
@@ -132,7 +137,7 @@ class MainViewController: UIViewController {
             guard let weather = weatherData?.getCityWeather(city: city) else {return}
             view.highValue.text = String(format: "%.0f", weather.tempHigh)
             view.nowValue.text = String(format: "%.0f", weather.tempNow)
-            view.lowValue.text = String(format: "%.0f", weather.tempNow)
+            view.lowValue.text = String(format: "%.0f", weather.tempLow)
             view.descriptionValue.text = weather.description.uppercased()
             if (getCurrentPageIndex() == index){
                 self.title = city.name.uppercased()
@@ -155,13 +160,17 @@ extension MainViewController: WeatherDataDelegate{
     }
     
     func didUpdateCities(_ weatherDataInstance: WeatherData, action: UpdateActions) {
-        if action == .delete{
+        if action == .delete || action == .add{
             dotsView?.removeFromSuperview()
             dotsView = nil
             scrollView.removeAllSubviews()
             contentViews.removeAll()
             setupScrollView()
             setupDotsView()
+        }
+        
+        if action == .update{
+            updateContentViews()
         }
     }
 }

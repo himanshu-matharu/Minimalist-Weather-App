@@ -10,6 +10,7 @@ import Foundation
 enum UpdateActions: String{
     case delete
     case update
+    case add
 }
 
 protocol WeatherDataDelegate{
@@ -29,11 +30,6 @@ class WeatherData {
     
     //MARK: - Initialization
     init(){
-//        cities = UserDefaults.standard.array(forKey: K.savedCitiesKey) as! [String]
-//        for city in cities {
-//            cityWeatherMap[city] = nil
-//            cityForecastMap[city] = nil
-//        }
         initCities()
     }
     
@@ -97,6 +93,16 @@ class WeatherData {
         delegate?.didUpdateCities(self, action: .delete)
     }
     
+    func addSavedCity(city:City, weather:WeatherModel){
+        let key = getAvailableCityId()
+        let newCity = City(id: key, name: city.name, latitude: city.latitude, longitude: city.longitude)
+        cities.append(newCity)
+        cityWeatherMap[newCity.id] = weather
+        cityForecastMap[newCity.id] = nil
+        updateSavedCities()
+        delegate?.didUpdateCities(self, action: .add)
+    }
+    
     func updateSavedCities(){
         let defaults = UserDefaults.standard
         do{
@@ -106,5 +112,20 @@ class WeatherData {
         }catch{
             print("Unable to encode and update saved cities array")
         }
+    }
+    
+    func rearrangeSavedCity(from sourceIndex:Int,to destinationIndex:Int){
+        let cityToRearrange = cities.remove(at: sourceIndex)
+        cities.insert(cityToRearrange, at: destinationIndex)
+        updateSavedCities()
+        delegate?.didUpdateCities(self, action: .update)
+    }
+    
+    func getAvailableCityId() -> Int{
+        var maxId = 0
+        for city in cities{
+            maxId = max(maxId, city.id)
+        }
+        return maxId + 1
     }
 }
