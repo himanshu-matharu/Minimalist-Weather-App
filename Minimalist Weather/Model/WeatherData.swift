@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 enum UpdateActions: String{
     case delete
@@ -27,6 +28,7 @@ class WeatherData {
     private var cityForecastMap : [Int:[Forecast]] = [:]
     let multicastDelegate = MulticastDelegate<WeatherDataDelegate>()
     var isLoaded : Bool = false
+    var cityIdInUrl: URL?
     
     //MARK: - Initialization
     init(){
@@ -35,7 +37,8 @@ class WeatherData {
     
     //MARK: - Class Methods
     func initCities(){
-        if let data = UserDefaults.standard.data(forKey: K.savedCitiesKey){
+//        if let data = UserDefaults.standard.data(forKey: K.savedCitiesKey){
+        if let data = UserDefaults(suiteName: K.appGroupBundleId)!.data(forKey: K.savedCitiesKey){
             do {
                 let decoder = JSONDecoder()
                 cities = try decoder.decode([City].self, from: data)
@@ -63,6 +66,12 @@ class WeatherData {
     
     func getCitiesCount()-> Int{
         return cities.count
+    }
+    
+    func getCityIndex(with url:URL) -> Int?{
+        return cities.firstIndex { city in
+            city.url == url
+        }
     }
     
     func updateForecastDate(city:City, forecastModel: ForecastModel){
@@ -113,11 +122,13 @@ class WeatherData {
     }
     
     func updateSavedCities(){
-        let defaults = UserDefaults.standard
+//        let defaults = UserDefaults.standard
+        let defaults = UserDefaults(suiteName: K.appGroupBundleId)!
         do{
             let encoder = JSONEncoder()
             let cities = try encoder.encode(cities)
             defaults.set(cities,forKey: K.savedCitiesKey)
+            WidgetCenter.shared.reloadAllTimelines()
         }catch{
             print("Unable to encode and update saved cities array")
         }

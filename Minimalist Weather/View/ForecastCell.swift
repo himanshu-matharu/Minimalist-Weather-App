@@ -18,15 +18,8 @@ class ForecastCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        timeLeadingConstraint.constant = 10 - timeLabel.frame.width/2
+        timeLeadingConstraint.constant = 18 - timeLabel.frame.width/2
         timeLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-    }
-    
-    func translateRotate() -> CGAffineTransform {
-        let transform = CGAffineTransform.identity
-        transform.translatedBy(x: (self.bounds.width/2) - (self.bounds.height/2), y: (self.bounds.height/2) - (self.bounds.width/2))
-        transform.rotated(by: -CGFloat.pi/2)
-        return transform
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

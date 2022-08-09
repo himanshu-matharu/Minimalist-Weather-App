@@ -36,6 +36,12 @@ class MainViewController: UIViewController {
         self.title = weatherData?.cities[0].name.uppercased()
         
         swipeInteractionController = SwipeInteractionController(fromViewController: self, toViewController: ForecastsViewController(), swipeView: swipeView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     private func setupScrollView(){
@@ -76,6 +82,19 @@ class MainViewController: UIViewController {
         
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.standardAppearance = appearance
+    }
+    
+    private func checkWidgetUrl(){
+        guard let widgetUrl = weatherData?.cityIdInUrl else {return}
+        guard let cityIndex = weatherData?.getCityIndex(with: widgetUrl) else {return}
+        let viewWidth = self.view.bounds.width
+        scrollView.setContentOffset(CGPoint(x: viewWidth * CGFloat(cityIndex), y: 0), animated: false)
+        dotsView?.updatePageIndicator(offset: viewWidth * CGFloat(cityIndex))
+        weatherData?.cityIdInUrl = nil
+    }
+    
+    @objc func applicationDidBecomeActive(){
+        checkWidgetUrl()
     }
     
     @objc func goToOptions(){

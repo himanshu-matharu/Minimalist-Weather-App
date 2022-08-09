@@ -10,6 +10,7 @@ import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    // TODO: Remove the redundant cities, and just change to default saved cities
     let DUMMY_CITIES : [City] = [
         City(id: 0, name: "My Location", latitude: 0, longitude: 0),
         City(id: 1,name: "Frankfurt", latitude: 50.11630522359943, longitude: 8.683179487766711),
@@ -30,14 +31,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        // temp
-        UserDefaults.standard.set(false, forKey: K.launchedBeforeKey)
+        // TODO: temporary initialization. remove it later
+        UserDefaults(suiteName: K.appGroupBundleId)?.set(false, forKey: K.launchedBeforeKey)
+//        UserDefaults.standard.set(false, forKey: K.launchedBeforeKey)
     
         setupCityDefaults()
         
         // Initialize weather data instance
         let weatherData = WeatherData()
         WeatherManager.shared.weatherData = weatherData
+        
+        if let widgetUrl = connectionOptions.urlContexts.first?.url{
+            WeatherManager.shared.weatherData?.cityIdInUrl = widgetUrl
+        }
         
         if let navigationController = window?.rootViewController as? UINavigationController,
            let mainVC = navigationController.viewControllers.first as? MainViewController
@@ -75,10 +81,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let firstUrl = URLContexts.first?.url else {return}
+        WeatherManager.shared.weatherData?.cityIdInUrl = firstUrl
+    }
 
     //MARK: - Custom Methods
     private func setupCityDefaults(){
-        let defaults = UserDefaults.standard
+//        let defaults = UserDefaults.standard
+        let defaults = UserDefaults(suiteName: K.appGroupBundleId)!
         
         let launchedBefore = defaults.bool(forKey: K.launchedBeforeKey)
         if !launchedBefore{
@@ -115,7 +127,7 @@ extension SceneDelegate: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        print(error.localizedDescription)
     }
 }
 

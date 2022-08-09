@@ -21,33 +21,36 @@
                         <rect key="frame" x="0.0" y="25" width="404" height="127"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpa-F2-17c" userLabel="Value">
-                                <rect key="frame" x="132.5" y="4" width="139" height="119.5"/>
+                                <rect key="frame" x="91" y="27" width="222" height="73"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="28">
+                                    <fragment content="26 - 28">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="125" name="HelveticaNeue-Medium"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="70" name="HelveticaNeue-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-bs-UrC" userLabel="Time">
-                                <rect key="frame" x="10" y="55" width="34" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-bs-UrC" userLabel="Time">
+                                <rect key="frame" x="10" y="55" width="50" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="3Lf-c3-LRZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="ForecastPrimaryTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="CLEAR AND SUNNY" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzo-jR-vh7" userLabel="Description">
-                                <rect key="frame" x="137" y="113.5" width="130" height="13.5"/>
+                                <rect key="frame" x="137" y="110" width="130" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="ForecastPrimaryTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Lzo-jR-vh7" firstAttribute="top" secondItem="Fpa-F2-17c" secondAttribute="bottom" constant="-10" id="MVK-oc-K0m"/>
+                            <constraint firstItem="Lzo-jR-vh7" firstAttribute="top" secondItem="Fpa-F2-17c" secondAttribute="bottom" constant="10" id="MVK-oc-K0m"/>
                             <constraint firstAttribute="bottom" secondItem="Lzo-jR-vh7" secondAttribute="bottom" id="aaU-xL-Q4U"/>
                             <constraint firstItem="jcp-bs-UrC" firstAttribute="centerY" secondItem="bbF-M1-fub" secondAttribute="centerY" id="aga-dM-6UU"/>
                             <constraint firstItem="jcp-bs-UrC" firstAttribute="leading" secondItem="bbF-M1-fub" secondAttribute="leading" constant="10" id="bvj-5g-pWB"/>
@@ -75,11 +78,6 @@
             <point key="canvasLocation" x="-7.2463768115942031" y="76.004464285714278"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="jcp-bs-UrC">
-            <size key="intrinsicContentSize" width="34" height="17"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="BackgroundColor">
             <color red="0.054999999701976776" green="0.030999999493360519" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

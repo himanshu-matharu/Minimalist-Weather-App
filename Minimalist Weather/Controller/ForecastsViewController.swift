@@ -70,7 +70,8 @@ extension ForecastsViewController: UITableViewDataSource{
             if weather.dayOfWeek == Date().dayOfWeek(){
                 cell.timeLabel.text = "TODAY"
                 let currentWeather = weatherData!.getCityWeather(city: city!)!
-                cell.tempValue.text = String(format: "%.0f", currentWeather.tempHigh)
+                cell.tempValue.text = "\(String(format: "%.0f", currentWeather.tempLow)) - \(String(format: "%.0f", currentWeather.tempHigh))"
+                cell.tempValue.textColor = UIColor(named: "PrimaryTextColor")
                 cell.descriptionLabel.text = currentWeather.description.uppercased()
                 return cell
             }else{
@@ -79,8 +80,8 @@ extension ForecastsViewController: UITableViewDataSource{
         }else{
             cell.timeLabel.text = weather.dayOfWeek!.uppercased()
         }
-        
-        cell.tempValue.text = String(format: "%.0f", weather.tempHigh)
+        cell.tempValue.text = "\(String(format: "%.0f", weather.tempLow)) - \(String(format: "%.0f", weather.tempHigh))"
+        cell.tempValue.textColor = UIColor(named: "PrimaryTextColor")
         cell.descriptionLabel.text = weather.description.uppercased()
         return cell
     }

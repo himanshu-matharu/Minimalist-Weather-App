@@ -6,6 +6,8 @@
 //
 
 struct K {
+    static let appGroupBundleId = "group.com.himanshumatharu.Minimalist-Weather"
+    
     static let optionsSegue = "MainToOptions"
     static let detailSegue = "MainToDetails"
     static let searchSegue = "OptionsToSearch"
