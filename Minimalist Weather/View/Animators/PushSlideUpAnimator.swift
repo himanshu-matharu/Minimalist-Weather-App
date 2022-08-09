@@ -42,7 +42,7 @@ class PushSlideUpAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) {
             toVC.view.transform = .identity
             toVC.view.alpha = 1.0
-            fromVC.view.transform = .init(translationX: 1, y: -window.size.height)
+            fromVC.view.transform = .init(scaleX: 0.6, y: 0.6).concatenating(.init(translationX: 1, y: -window.size.height))
             fromVC.view.alpha = 0.0
         } completion: { finished in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

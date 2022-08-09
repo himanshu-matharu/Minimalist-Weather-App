@@ -15,7 +15,7 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     private weak var fromViewController : UIViewController!
     private weak var toViewController : UIViewController!
     
-    private let threshold: CGFloat = 0.7
+    private let threshold: CGFloat = 0.5
     private let dragAmount = UIScreen.main.bounds.height - 150
 
     

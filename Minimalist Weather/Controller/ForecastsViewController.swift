@@ -35,7 +35,6 @@ class ForecastsViewController : UIViewController {
     
     func setupTableView(){
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: K.forecastCellNibName, bundle: nil), forCellReuseIdentifier: K.forecastCellIdentifier)
     }
@@ -86,20 +85,6 @@ extension ForecastsViewController: UITableViewDataSource{
         return cell
     }
     
-}
-
-//MARK: - UITableViewDelegate
-
-extension ForecastsViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let vw = UIView()
-        vw.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: tableView.frame.width, height: 40))
-        return vw
-    }
 }
 
 //MARK: - WeatherDataDelegate
