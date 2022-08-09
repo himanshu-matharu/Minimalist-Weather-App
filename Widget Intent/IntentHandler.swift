@@ -34,6 +34,7 @@ extension IntentHandler: SelectCityIntentHandling{
                 completion(nil,error)
             }
         }else{
+            print("Unable to fetch saved cities")
             completion(nil,nil)
         }
     }

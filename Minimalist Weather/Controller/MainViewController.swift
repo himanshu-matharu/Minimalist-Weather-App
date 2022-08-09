@@ -184,6 +184,7 @@ extension MainViewController: WeatherDataDelegate{
             dotsView?.removeFromSuperview()
             dotsView = nil
             scrollView.removeAllSubviews()
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             contentViews.removeAll()
             setupScrollView()
             setupDotsView()
