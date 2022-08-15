@@ -10,13 +10,12 @@ import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    // TODO: Remove the redundant cities, and just change to default saved cities
-    let DUMMY_CITIES : [City] = [
+    let DEFAULT_CITIES : [City] = [
         City(id: 0, name: "My Location", latitude: 0, longitude: 0),
-        City(id: 1,name: "Frankfurt", latitude: 50.11630522359943, longitude: 8.683179487766711),
-        City(id: 2,name: "Paris", latitude: 48.85345575326961, longitude: 2.3500839018335804),
-        City(id: 3,name: "Budapest", latitude: 47.51777591723693, longitude: 19.046526389932264),
-        City(id: 4,name: "London", latitude: 51.496936024546535, longitude: -0.12289001864225133)
+//        City(id: 1,name: "Frankfurt", latitude: 50.11630522359943, longitude: 8.683179487766711),
+//        City(id: 2,name: "Paris", latitude: 48.85345575326961, longitude: 2.3500839018335804),
+//        City(id: 3,name: "Budapest", latitude: 47.51777591723693, longitude: 19.046526389932264),
+//        City(id: 4,name: "London", latitude: 51.496936024546535, longitude: -0.12289001864225133)
     ]
     
     var window: UIWindow?
@@ -29,10 +28,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         
-        // TODO: temporary initialization. remove it later
-        UserDefaults(suiteName: K.appGroupBundleId)?.set(false, forKey: K.launchedBeforeKey)
+//        UserDefaults(suiteName: K.appGroupBundleId)?.set(false, forKey: K.launchedBeforeKey)
 //        UserDefaults.standard.set(false, forKey: K.launchedBeforeKey)
     
         setupCityDefaults()
@@ -40,6 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Initialize weather data instance
         let weatherData = WeatherData()
         WeatherManager.shared.weatherData = weatherData
+        
+        locationManager.requestLocation()
         
         if let widgetUrl = connectionOptions.urlContexts.first?.url{
             WeatherManager.shared.weatherData?.cityIdInUrl = widgetUrl
@@ -89,14 +89,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     //MARK: - Custom Methods
     private func setupCityDefaults(){
-//        let defaults = UserDefaults.standard
         let defaults = UserDefaults(suiteName: K.appGroupBundleId)!
         
         let launchedBefore = defaults.bool(forKey: K.launchedBeforeKey)
         if !launchedBefore{
             do{
                 let encoder = JSONEncoder()
-                let cities = try encoder.encode(DUMMY_CITIES)
+                let cities = try encoder.encode(DEFAULT_CITIES)
                 defaults.set(true, forKey: K.launchedBeforeKey)
                 defaults.set(cities,forKey: K.savedCitiesKey)
             }catch{

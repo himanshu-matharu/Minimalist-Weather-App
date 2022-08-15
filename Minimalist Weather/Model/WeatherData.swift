@@ -37,7 +37,6 @@ class WeatherData {
     
     //MARK: - Class Methods
     func initCities(){
-//        if let data = UserDefaults.standard.data(forKey: K.savedCitiesKey){
         if let data = UserDefaults(suiteName: K.appGroupBundleId)!.data(forKey: K.savedCitiesKey){
             do {
                 let decoder = JSONDecoder()
@@ -89,7 +88,6 @@ class WeatherData {
         multicastDelegate.invokeForEachDelegate { delegate in
             delegate.didUpdateForecast(self)
         }
-//        delegate?.didUpdateForecast(self)
     }
     
     func updateMyLocation(city:String,latitude:Double,longitude:Double){
@@ -105,7 +103,6 @@ class WeatherData {
         multicastDelegate.invokeForEachDelegate { delegate in
             delegate.didUpdateCities(self, action: .delete)
         }
-//        delegate?.didUpdateCities(self, action: .delete)
     }
     
     func addSavedCity(city:City, weather:WeatherModel){
@@ -118,11 +115,9 @@ class WeatherData {
         multicastDelegate.invokeForEachDelegate { delegate in
             delegate.didUpdateCities(self, action: .add)
         }
-//        delegate?.didUpdateCities(self, action: .add)
     }
     
     func updateSavedCities(){
-//        let defaults = UserDefaults.standard
         let defaults = UserDefaults(suiteName: K.appGroupBundleId)!
         do{
             let encoder = JSONEncoder()
@@ -141,7 +136,6 @@ class WeatherData {
         multicastDelegate.invokeForEachDelegate { delegate in
             delegate.didUpdateCities(self, action: .update)
         }
-//        delegate?.didUpdateCities(self, action: .update)
     }
     
     func getAvailableCityId() -> Int{

@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         weatherData?.multicastDelegate.add(delegate: self)
-//        weatherData?.delegate = self
         scrollView.delegate = self
         navigationController?.delegate = self
         

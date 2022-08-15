@@ -35,7 +35,6 @@ class WeatherManager{
             data.multicastDelegate.invokeForEachDelegate { delegate in
                 delegate.didUpdateWeather(data)
             }
-//            data.delegate?.didUpdateWeather(data)
         }
     }
     
