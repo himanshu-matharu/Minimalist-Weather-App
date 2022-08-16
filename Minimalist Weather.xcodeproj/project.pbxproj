@@ -605,8 +605,9 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show local weather.";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -634,8 +635,9 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show local weather.";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,7 +663,7 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Widget Intent/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Widget Intent";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather Widget Intent";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -688,7 +690,7 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Widget Intent/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Widget Intent";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather Widget Intent";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -832,6 +834,7 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Minimalist Weather/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show local weather.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -864,6 +867,7 @@
 				DEVELOPMENT_TEAM = LG87JSSL59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Minimalist Weather/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minimal Weather";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show local weather.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
