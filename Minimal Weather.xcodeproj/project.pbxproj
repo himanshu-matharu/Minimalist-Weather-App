@@ -116,6 +116,7 @@
 		A30175462880FE570051C33C /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		A301754A28817F7B0051C33C /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 		A307B4EB289564EA00E3274F /* UIScrollView+RemoveAllSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+RemoveAllSubviews.swift"; sourceTree = "<group>"; };
+		A34AAB1B28ACF53C004DC0D4 /* config.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = config.md; sourceTree = "<group>"; };
 		A35073F22881BF4F00092B9D /* Date+DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayOfWeek.swift"; sourceTree = "<group>"; };
 		A35073F52881DD7900092B9D /* Array+Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Average.swift"; sourceTree = "<group>"; };
 		A35073F72881DE7100092B9D /* Collection+MostFrequent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MostFrequent.swift"; sourceTree = "<group>"; };
@@ -145,7 +146,7 @@
 		A3B8A538286EC5240046CA30 /* TempContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempContentView.swift; sourceTree = "<group>"; };
 		A3C6F3B62894955D00F2002A /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		A3E529D3289A045B0094DE9F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
-		A3ECBE93284733E50058DDC2 /* Minimalist Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minimalist Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3ECBE93284733E50058DDC2 /* Minimal Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minimal Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3ECBE96284733E50058DDC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3ECBE98284733E50058DDC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A3ECBE9A284733E50058DDC2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -296,7 +297,7 @@
 		A3ECBE94284733E50058DDC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3ECBE93284733E50058DDC2 /* Minimalist Weather.app */,
+				A3ECBE93284733E50058DDC2 /* Minimal Weather.app */,
 				A390326A28A0D20F001537EB /* WidgetExtension.appex */,
 				A390328428A0D33B001537EB /* Widget Intent.appex */,
 			);
@@ -315,6 +316,7 @@
 				A3ECBEB7284818AB0058DDC2 /* Controller */,
 				A301754928811A050051C33C /* Resources */,
 				A3017548288119D40051C33C /* Supporting Files */,
+				A34AAB1B28ACF53C004DC0D4 /* config.md */,
 			);
 			path = "Minimalist Weather";
 			sourceTree = "<group>";
@@ -399,9 +401,9 @@
 			productReference = A390328428A0D33B001537EB /* Widget Intent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		A3ECBE92284733E50058DDC2 /* Minimalist Weather */ = {
+		A3ECBE92284733E50058DDC2 /* Minimal Weather */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3ECBEA7284733E60058DDC2 /* Build configuration list for PBXNativeTarget "Minimalist Weather" */;
+			buildConfigurationList = A3ECBEA7284733E60058DDC2 /* Build configuration list for PBXNativeTarget "Minimal Weather" */;
 			buildPhases = (
 				A3ECBE8F284733E50058DDC2 /* Sources */,
 				A3ECBE90284733E50058DDC2 /* Frameworks */,
@@ -414,9 +416,9 @@
 				A390327728A0D211001537EB /* PBXTargetDependency */,
 				A390328C28A0D33B001537EB /* PBXTargetDependency */,
 			);
-			name = "Minimalist Weather";
+			name = "Minimal Weather";
 			productName = "Minimalist Weather";
-			productReference = A3ECBE93284733E50058DDC2 /* Minimalist Weather.app */;
+			productReference = A3ECBE93284733E50058DDC2 /* Minimal Weather.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -440,7 +442,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A3ECBE8E284733E50058DDC2 /* Build configuration list for PBXProject "Minimalist Weather" */;
+			buildConfigurationList = A3ECBE8E284733E50058DDC2 /* Build configuration list for PBXProject "Minimal Weather" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -453,7 +455,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A3ECBE92284733E50058DDC2 /* Minimalist Weather */,
+				A3ECBE92284733E50058DDC2 /* Minimal Weather */,
 				A390326928A0D20F001537EB /* WidgetExtension */,
 				A390328328A0D33B001537EB /* Widget Intent */,
 			);
@@ -909,7 +911,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3ECBE8E284733E50058DDC2 /* Build configuration list for PBXProject "Minimalist Weather" */ = {
+		A3ECBE8E284733E50058DDC2 /* Build configuration list for PBXProject "Minimal Weather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3ECBEA5284733E60058DDC2 /* Debug */,
@@ -918,7 +920,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3ECBEA7284733E60058DDC2 /* Build configuration list for PBXNativeTarget "Minimalist Weather" */ = {
+		A3ECBEA7284733E60058DDC2 /* Build configuration list for PBXNativeTarget "Minimal Weather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3ECBEA8284733E60058DDC2 /* Debug */,

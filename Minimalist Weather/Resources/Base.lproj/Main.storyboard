@@ -11,7 +11,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Minimal_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--Options View Controller-->
         <scene sceneID="Ulc-Jv-myM">
             <objects>
-                <viewController id="CFI-dO-6Bu" customClass="OptionsViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CFI-dO-6Bu" customClass="OptionsViewController" customModule="Minimal_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aJu-qx-MzG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
         <!--Search View Controller-->
         <scene sceneID="uzN-ud-Zi4">
             <objects>
-                <viewController id="CdA-a2-UYB" userLabel="Search View Controller" customClass="SearchViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CdA-a2-UYB" userLabel="Search View Controller" customClass="SearchViewController" customModule="Minimal_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o8d-Ea-A4k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +119,7 @@
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-rH-z6f">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-rH-z6f">
                                 <rect key="frame" x="0.0" y="71" width="414" height="771"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                             </tableView>
@@ -158,12 +158,12 @@
         <!--Details View Controller Scene-->
         <scene sceneID="6ek-KX-RKr">
             <objects>
-                <viewController id="cgx-RH-Je6" userLabel="Details View Controller Scene" customClass="ForecastsViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cgx-RH-Je6" userLabel="Details View Controller Scene" customClass="ForecastsViewController" customModule="Minimal_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C9X-FG-hEt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-ud-548">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-ud-548">
                                 <rect key="frame" x="10" y="88" width="394" height="774"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                             </tableView>
@@ -189,12 +189,12 @@
         <!--Search Detail View Controller-->
         <scene sceneID="GFB-Nz-Oi3">
             <objects>
-                <viewController id="LQ9-bB-Imn" customClass="SearchDetailViewController" customModule="Minimalist_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LQ9-bB-Imn" customClass="SearchDetailViewController" customModule="Minimal_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hiv-AX-PHp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcK-kX-8H7" customClass="TempContentView" customModule="Minimalist_Weather" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcK-kX-8H7" customClass="TempContentView" customModule="Minimal_Weather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                             </view>
