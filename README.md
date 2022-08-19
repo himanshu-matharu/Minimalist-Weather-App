@@ -40,5 +40,8 @@ static let apiKey = "[Your api key]"
 
 5. Build and Run.
 
+# License
+The Minimal Weather app is free and open-source software licensed under the GNU General Public License v3.0. See the <a href="https://github.com/himanshu-matharu/Minimalist-Weather-App/blob/main/LICENSE">LICENSE</a> file for more details.
+
 # Contact
 For any queries, send me a mail on himanshumatharu1155@gmail.com
