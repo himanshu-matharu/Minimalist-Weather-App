@@ -1,5 +1,14 @@
 <p align="center"><img src="Minimal%20Weather.png" width="480" alt="thumbnail"></p>
 
+<div align="center">
+<a href="https://github.com/himanshu-matharu/Minimalist-Weather-App/releases">
+<img src='https://img.shields.io/badge/version-1.0.0-blue'>
+</a>
+<a href="https://github.com/himanshu-matharu/Minimalist-Weather-App/blob/main/LICENSE">
+<img src="https://img.shields.io/badge/License-GPLv3-blue.svg"/>
+</a>
+</div>
+
 ## App Store link
 The app is under review on Apple AppStore Connect and will be available soon.
 
