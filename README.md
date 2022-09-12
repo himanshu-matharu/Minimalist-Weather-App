@@ -10,7 +10,7 @@
 </div>
 
 ## App Store link
-The app is under review on Apple AppStore Connect and will be available soon.
+<a href="https://apps.apple.com/us/app/minimal-weather/id1640216968?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1662681600&h=00aab9d2bd8ea16bf432a465644fda09" alt="Download on the App Store" style="border-radius: 13px; width: 200px; height: 66.4px;"></a>
 
 # Description
 A minimalistic weather app free from all the clutter and provides only the essential information.
